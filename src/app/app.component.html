@@ -11,27 +11,45 @@
         <h1>Ant Design Of Angular</h1>
       </a>
     </div>
-    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
-        <ul>
+    <ul  nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li *ngIf="auth.loggedIn" nz-submenu nzOpen nzTitle="MarkUp" nzIcon="dashboard">
+        <ul >
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/welcome">Welcome</a>
+            <a routerLink="/usuario">Usuarios</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a>Monitor</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a>Workplace</a>
+            <a routerLink="/taks">Task</a>
           </li>
         </ul>
       </li>
-      <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a>Basic Form</a>
-          </li>
-        </ul>
-      </li>
+          
+      <li
+          nz-menu-item
+          nz-tooltip
+          nzTooltipPlacement="right"
+          nzTooltipTitle="Ingresar"
+          class="login"
+          *ngIf="!auth.loggedIn"
+          (click)="auth.login()"
+        >
+          <i nz-icon nzType="login"></i>
+          <span>Ingresar</span>
+        </li>
+     
+    
+        <li
+          nz-menu-item
+          nz-tooltip
+          nzTooltipPlacement="right"
+          nzTooltipTitle="Salir"
+          class="login"
+          *ngIf="auth.loggedIn"
+          (click)="auth.logout()"
+        >
+          <i nz-icon nzType="login"></i>
+          <span>Salir</span>
+        </li>
+      
     </ul>
   </nz-sider>
   <nz-layout>

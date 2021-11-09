@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { PagesModule } from './pages/pages.module';
 
 registerLocaleData(en);
 
@@ -24,6 +25,7 @@ registerLocaleData(en);
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    PagesModule,
     HttpClientModule,
     BrowserAnimationsModule,
     IconsProviderModule,

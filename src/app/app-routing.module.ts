@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UsuarioComponent } from './pages/welcome/usuario.component';
+import { CallbackComponent } from './pages/callback/callback.component';
+import { TaksComponent } from './pages/taks/taks.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/welcome' },
-  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) }
+  
+  { path: 'usuario', component: UsuarioComponent },
+  { path: 'callback', component: CallbackComponent },
+  { path: 'taks', component: TaksComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'welcome'}
 ];
 
 @NgModule({
