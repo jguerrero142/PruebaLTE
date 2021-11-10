@@ -3,13 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsuarioComponent } from './pages/welcome/usuario.component';
 import { CallbackComponent } from './pages/callback/callback.component';
 import { TaksComponent } from './pages/taks/taks.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  
+  { path: 'home', component: HomeComponent },
   { path: 'usuario', component: UsuarioComponent },
   { path: 'callback', component: CallbackComponent },
   { path: 'taks', component: TaksComponent },
-  { path: '**', pathMatch: 'full', redirectTo: 'welcome'}
+  { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 
 @NgModule({
