@@ -7,6 +7,7 @@ import com.example.demo.models.UsuarioModel;
 import com.example.demo.services.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +16,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
+    @Bean
+        public WebMvcConfigurer corsConfigurer() {
+            return new WebMvcConfigurer() {
+                @Override
+                public void addCorsMappings(CorsRegistry registry) {
+                    registry.addMapping("/**").allowedOrigins("*").allowedMethods("GET", "POST","PUT", "DELETE");
+                }
+            };
+        }
 
     @Autowired
     UsuarioService usuarioService;
@@ -39,8 +51,8 @@ public class UsuarioController {
     }
     
     @GetMapping("/query")
-    public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(@RequestParam("prioridad") Integer prioridad){
-        return this.usuarioService.obtenerPorPriodidad(prioridad);
+    public ArrayList<UsuarioModel> obtenerUsuarioPorEstado(@RequestParam("prioridad") Boolean estado){
+        return this.usuarioService.obtenerPorEstado(estado);
     }
 
     @DeleteMapping( path = "/{id}")
