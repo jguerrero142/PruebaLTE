@@ -49,8 +49,7 @@ export class UsuarioComponent implements OnInit {
   getUsers(){
     this.userService.getUser.subscribe( (d ) => {
       if( d.length > 0){
-        this.users = d
-        console.log(this.users)
+        this.users = d;
       }
       
     })

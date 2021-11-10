@@ -61,8 +61,8 @@
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
             ></i>
         </span>
-        <nz-badge *ngIf="auth.loggedIn" [nzCount]="5">
-          <a class="head-example"></a>
+        <nz-badge *ngIf="auth.loggedIn" [nzCount]="taks">
+          <nz-tag [nzColor]="'magenta'">Tareas Pendientes: {{ count$ | async }}</nz-tag>
         </nz-badge>
       </div>
     </nz-header>
